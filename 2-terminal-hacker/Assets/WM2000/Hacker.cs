@@ -7,7 +7,7 @@ public class Hacker : MonoBehaviour {
 	// Game state
 	int level;
 	enum Screen {MainMenu, Password, Win};
-	Screen currentScreen = Screen.MainMenu;
+	Screen currentScreen;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,7 @@ public class Hacker : MonoBehaviour {
 	}
 
 	void ShowMainMenu () {
+		currentScreen = Screen.MainMenu;
 		Terminal.ClearScreen();
 		Terminal.WriteLine("Hello, Zach");
 		Terminal.WriteLine("L33T H3CK0r 3000");
@@ -30,12 +31,16 @@ public class Hacker : MonoBehaviour {
 
 	void OnUserInput(string input)
 	{
-		if (input == "menu") {
+		if (input == "menu") { //We can always go to the main menu
 			ShowMainMenu();
-			currentScreen = Screen.MainMenu;
 		}
-		// TODO handle differently depending on screen
-		else if (input == "1") {
+		else if (currentScreen == Screen.MainMenu) {
+			RunMainMenu(input);
+		}
+	}
+
+	void RunMainMenu (string input) {
+		if (input == "1") {
 			Terminal.WriteLine("Attempting to hack into Miss Edge's ");
 			Terminal.WriteLine("laptop... ");
 			Terminal.WriteLine("... (this should be easy) ...");
