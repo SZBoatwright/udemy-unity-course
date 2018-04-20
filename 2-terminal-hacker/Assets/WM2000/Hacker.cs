@@ -6,6 +6,8 @@ public class Hacker : MonoBehaviour {
 
 	// Game state
 	int level;
+	enum Screen {MainMenu, Password, Win};
+	Screen currentScreen = Screen.MainMenu;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +30,12 @@ public class Hacker : MonoBehaviour {
 
 	void OnUserInput(string input)
 	{
-		if (input == "1") {
+		if (input == "menu") {
+			ShowMainMenu();
+			currentScreen = Screen.MainMenu;
+		}
+		// TODO handle differently depending on screen
+		else if (input == "1") {
 			Terminal.WriteLine("Attempting to hack into Miss Edge's ");
 			Terminal.WriteLine("laptop... ");
 			Terminal.WriteLine("... (this should be easy) ...");
@@ -41,9 +48,6 @@ public class Hacker : MonoBehaviour {
 			level = 2;
 			startGame();
 		}
-		else if (input == "menu") {
-			ShowMainMenu();
-		}
 		else if (input == "poop") {
 			Terminal.WriteLine("💩");
 		}
@@ -54,5 +58,6 @@ public class Hacker : MonoBehaviour {
 
 	void startGame() {
 		Terminal.WriteLine("You have chosen level " + level);
+		currentScreen = Screen.Password;
 	}
 }
