@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
+	// Game state
+	int level;
+
 	// Use this for initialization
 	void Start () {
 		ShowMainMenu();
@@ -29,10 +32,14 @@ public class Hacker : MonoBehaviour {
 			Terminal.WriteLine("Attempting to hack into Miss Edge's ");
 			Terminal.WriteLine("laptop... ");
 			Terminal.WriteLine("... (this should be easy) ...");
+			level = 1;
+			startGame();
 		}
 		else if (input == "2") {
 			Terminal.WriteLine("Attempting to hack into the popo");
 			Terminal.WriteLine("station...");
+			level = 2;
+			startGame();
 		}
 		else if (input == "menu") {
 			ShowMainMenu();
@@ -43,5 +50,9 @@ public class Hacker : MonoBehaviour {
 		else {
 			Terminal.WriteLine("Please select a level");
 		}
+	}
+
+	void startGame() {
+		Terminal.WriteLine("You have chosen level " + level);
 	}
 }
