@@ -6,8 +6,8 @@ public class Hacker : MonoBehaviour {
 
 	// Game Configuration Data
 	const string menuHint = "You may type menu at any time";
-	string[] level1Passwords = {"password", "cats", "java", "dogs", "fish", "username"};
-	string[] level2Passwords = {"prisoner", "handcuffs", "jailcell", "policebrutality", "donuts"};
+	string[] level1Passwords = {"password", "cats", "password1", "dogs", "fish", "username"};
+	string[] level2Passwords = {"prisoner", "handcuffs", "jailcell", "inmates", "donuts"};
 	string[] level3Passwords = {"nebula", "shootingstars", "europa", "spaceship", "aerodynamics"};
 
 	// Game state
@@ -24,10 +24,9 @@ public class Hacker : MonoBehaviour {
 	void ShowMainMenu () {
 		currentScreen = Screen.MainMenu;
 		Terminal.ClearScreen();
-		Terminal.WriteLine("Hello, Zach");
-		Terminal.WriteLine("What system would you like to hack in to?");
-		Terminal.WriteLine("1 - Miss Edge's laptop");
-		Terminal.WriteLine("2 - Popo station");
+		Terminal.WriteLine("Choose a system to hack in to?");
+		Terminal.WriteLine("1 - Old lady's Facebook");
+		Terminal.WriteLine("2 - Police station");
 		Terminal.WriteLine("3 - NASA");
 	}
 	
@@ -126,14 +125,12 @@ public class Hacker : MonoBehaviour {
 	// ASCII Art
 	void ShowRunningMan() {
 						Terminal.WriteLine(@"
-                _
               _( }
     -=   _  <<  \
         `.\__/`/\\
   -=      '--'\\  `
        -=     //
    -==        \)
-
 				");
 	}
 	void ShowKitten() {
