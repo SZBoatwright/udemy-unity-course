@@ -48,20 +48,10 @@ public class Hacker : MonoBehaviour {
 	}
 
 	void RunMainMenu (string input) {
-		if (input == "1") {
-			Terminal.WriteLine("Attempting to hack into Miss Edge's ");
-			Terminal.WriteLine("laptop... ");
-			Terminal.WriteLine("... (this should be easy) ...");
-			level = 1;
-			password = level1Passwords[0]; // TODO make random
-			startGame();
-		}
-		else if (input == "2") {
-			Terminal.WriteLine("Attempting to hack into the popo");
-			Terminal.WriteLine("station...");
-			level = 2;
-			password = level2Passwords[0];
-			startGame();
+		bool isValidLevelNumber = (input == "1" || input == "2");
+		if (isValidLevelNumber) {
+			level = int.Parse(input);
+			StartGame();
 		}
 		else if (input == "poop") {
 			Terminal.WriteLine("💩");
@@ -80,8 +70,20 @@ public class Hacker : MonoBehaviour {
 		}
 	}
 
-	void startGame() {
-		Terminal.WriteLine("You have chosen level " + level);
+	void StartGame() {
+		Terminal.ClearScreen();
 		currentScreen = Screen.Password;
+		switch(level) {
+			case 1:
+				password = level1Passwords[0];
+				break;
+			case 2: 
+				password = level2Passwords[0];
+				break;
+			default: 
+				Debug.LogError("Invalid level number");
+				break;
+		}
+		Terminal.WriteLine("Please enter the password.");
 	}
 }
