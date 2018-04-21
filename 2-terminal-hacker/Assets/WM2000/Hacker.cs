@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
+	// Game Configuration Data
+	string[] level1Passwords = {"password", "cats", "java", "dogs", "fish", "username"};
+	string[] level2Passwords = {"prisoner", "handcuffs", "jailcell", "policebrutality", "donuts"};
+
 	// Game state
 	int level;
+	string password;
 	enum Screen {MainMenu, Password, Win};
 	Screen currentScreen;
 
@@ -37,6 +42,9 @@ public class Hacker : MonoBehaviour {
 		else if (currentScreen == Screen.MainMenu) {
 			RunMainMenu(input);
 		}
+		else if (currentScreen == Screen.Password) {
+			CheckPassword(input);
+		}
 	}
 
 	void RunMainMenu (string input) {
@@ -45,12 +53,14 @@ public class Hacker : MonoBehaviour {
 			Terminal.WriteLine("laptop... ");
 			Terminal.WriteLine("... (this should be easy) ...");
 			level = 1;
+			password = level1Passwords[0]; // TODO make random
 			startGame();
 		}
 		else if (input == "2") {
 			Terminal.WriteLine("Attempting to hack into the popo");
 			Terminal.WriteLine("station...");
 			level = 2;
+			password = level2Passwords[0];
 			startGame();
 		}
 		else if (input == "poop") {
@@ -58,6 +68,15 @@ public class Hacker : MonoBehaviour {
 		}
 		else {
 			Terminal.WriteLine("Please select a level");
+		}
+	}
+
+	void CheckPassword (string input) {
+		if (input == password) {
+			Terminal.WriteLine ("Access Granted.");
+		}
+		else {
+			Terminal.WriteLine ("Access Denied.");
 		}
 	}
 
