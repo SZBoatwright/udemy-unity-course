@@ -5,8 +5,10 @@ using UnityEngine;
 public class Hacker : MonoBehaviour {
 
 	// Game Configuration Data
+	const string menuHint = "You may type menu at any time";
 	string[] level1Passwords = {"password", "cats", "java", "dogs", "fish", "username"};
 	string[] level2Passwords = {"prisoner", "handcuffs", "jailcell", "policebrutality", "donuts"};
+	string[] level3Passwords = {"nebula", "shootingstars", "europa", "spaceship", "aerodynamics"};
 
 	// Game state
 	int level;
@@ -23,10 +25,10 @@ public class Hacker : MonoBehaviour {
 		currentScreen = Screen.MainMenu;
 		Terminal.ClearScreen();
 		Terminal.WriteLine("Hello, Zach");
-		Terminal.WriteLine("L33T H3CK0r 3000");
-		Terminal.WriteLine("WH3T D0 U W3NN3 H3K IN2???:");
+		Terminal.WriteLine("What system would you like to hack in to?");
 		Terminal.WriteLine("1 - Miss Edge's laptop");
 		Terminal.WriteLine("2 - Popo station");
+		Terminal.WriteLine("3 - NASA");
 	}
 	
 	// Update is called once per frame
@@ -48,10 +50,10 @@ public class Hacker : MonoBehaviour {
 	}
 
 	void RunMainMenu (string input) {
-		bool isValidLevelNumber = (input == "1" || input == "2");
+		bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
 		if (isValidLevelNumber) {
 			level = int.Parse(input);
-			StartGame();
+			AskForPassword();
 		}
 		else if (input == "poop") {
 			Terminal.WriteLine("💩");
@@ -63,16 +65,48 @@ public class Hacker : MonoBehaviour {
 
 	void CheckPassword (string input) {
 		if (input == password) {
-			Terminal.WriteLine ("Access Granted.");
+			DisplayWinScreen();
 		}
 		else {
-			Terminal.WriteLine ("Access Denied.");
+			AskForPassword();
+		}
+		Terminal.WriteLine(menuHint);
+	}
+
+	void DisplayWinScreen () {
+		currentScreen = Screen.Win;
+		Terminal.ClearScreen();
+		ShowLevelReward();
+	}
+
+	void ShowLevelReward() {
+		switch (level) {
+			case 1:
+				Terminal.WriteLine("There's just a lot of kittens...");
+				ShowKitten();
+				break;
+			case 2:
+				Terminal.WriteLine("You released all of the prisoners!!!");
+				ShowRunningMan();
+				break;
+			case 3:
+				Terminal.WriteLine("You launched a space ship!!!!");
+				ShowSpaceShip();
+				break;
+			default: 
+				Debug.LogError("not a valid argument!");
+				break;
 		}
 	}
 
-	void StartGame() {
+	void AskForPassword() {
 		Terminal.ClearScreen();
 		currentScreen = Screen.Password;
+		SetRandomPassword();
+		Terminal.WriteLine("Enter the password. Hint:" + password.Anagram());
+	}
+
+	void SetRandomPassword() {
 		switch(level) {
 			case 1:
 				password = level1Passwords[Random.Range(0, level1Passwords.Length)];
@@ -80,10 +114,45 @@ public class Hacker : MonoBehaviour {
 			case 2: 
 				password = level2Passwords[Random.Range(0, level2Passwords.Length)];
 				break;
+			case 3: 
+				password = level3Passwords[Random.Range(0, level3Passwords.Length)];
+				break;
 			default: 
 				Debug.LogError("Invalid level number");
 				break;
 		}
-		Terminal.WriteLine("Please enter the password.");
 	}
+
+	// ASCII Art
+	void ShowRunningMan() {
+						Terminal.WriteLine(@"
+                _
+              _( }
+    -=   _  <<  \
+        `.\__/`/\\
+  -=      '--'\\  `
+       -=     //
+   -==        \)
+
+				");
+	}
+	void ShowKitten() {
+						Terminal.WriteLine(@"
+    /\**/\
+   ( o_o  )_)
+   ,(u  u  ,),
+				");
+	}
+	void ShowSpaceShip() {
+						Terminal.WriteLine(@"
+   __
+   \ \_____
+###[==_____>
+   /_/      __
+            \ \_____
+         ###[==_____>
+            /_/
+				");
+	}
+
 }
