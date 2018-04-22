@@ -23,6 +23,22 @@ public class Rocket : MonoBehaviour {
         Rotate();
 	}
 
+    void OnCollisionEnter(Collision collision) // a variable called collision of type Collision
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                print("this object luvs u :)"); //TODO remove this line
+                break;
+            case "Fuel":
+                print("Fuel up bby ;)");
+                break;
+            default:
+                print("U R DED :((((((");
+                break;
+        }
+    }
+
     private void Thrust()
     {
 
@@ -58,5 +74,5 @@ public class Rocket : MonoBehaviour {
         }
         rigidBody.freezeRotation = false; // Hands rotation of rigid body back to physics engine
     }
-}
 
+}
