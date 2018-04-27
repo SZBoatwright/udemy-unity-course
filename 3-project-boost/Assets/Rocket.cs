@@ -11,6 +11,9 @@ public class Rocket : MonoBehaviour {
     Rigidbody rigidBody;
     AudioSource audioSource;
 
+    enum State { Alive, Dying, Transcending };
+    State state = State.Alive;
+
 	// Use this for initialization
 	void Start () {
         rigidBody = GetComponent<Rigidbody>();
@@ -20,12 +23,18 @@ public class Rocket : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Thrust();
-        Rotate();
+        // todo stop sound on death
+        if(state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
 	}
 
     void OnCollisionEnter(Collision collision) // a variable called collision of type Collision
     {
+        if(state != State.Alive){return;}
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -35,14 +44,24 @@ public class Rocket : MonoBehaviour {
                 print("Fuel up bby ;)");
                 break;
             case "Finish":
-                print("You beat the level!");
-                SceneManager.LoadScene(1);
+                state = State.Transcending;
+                Invoke("LoadNextLevel", 1f); // parameterise time
                 break;
             default:
-                print("U R DED :((((((");
-                SceneManager.LoadScene(0);
+                state = State.Dying;
+                Invoke("LoadFirstLevel", 1f); // parameterise time
                 break;
         }
+    }
+
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1); // todo allow for more than 2 level
     }
 
     private void Thrust()
@@ -78,6 +97,7 @@ public class Rocket : MonoBehaviour {
         {
             transform.Rotate(-Vector3.forward * roationThisFrame);
         }
+
         rigidBody.freezeRotation = false; // Hands rotation of rigid body back to physics engine
     }
 
