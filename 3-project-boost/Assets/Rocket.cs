@@ -10,7 +10,6 @@ public class Rocket : MonoBehaviour {
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip success;
-    [SerializeField] AudioClip levelStart;
 
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -23,7 +22,6 @@ public class Rocket : MonoBehaviour {
     {
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(levelStart);
 	}
 	
 	// Update is called once per frame
