@@ -107,7 +107,17 @@ public class Rocket : MonoBehaviour {
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1); // todo allow for more than 2 level
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex;
+        if (currentIndex >= (SceneManager.sceneCountInBuildSettings-1))
+        {
+            nextSceneIndex = 0;
+        }
+        else
+        {
+            nextSceneIndex = currentIndex + 1;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     private void RespondToThrustInput()
