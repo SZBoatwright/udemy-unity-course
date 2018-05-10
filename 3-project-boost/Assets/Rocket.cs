@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,8 @@ public class Rocket : MonoBehaviour {
     enum State { Alive, Dying, Transcending };
     State state = State.Alive;
 
+    [SerializeField] bool collisionsEnabled = true;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -39,16 +42,32 @@ public class Rocket : MonoBehaviour {
             RespondToThrustInput();
             RespondToRotateInput();
         }
-	}
+        //todo only if debug on
+        if(Debug.isDebugBuild)
+        {
+            respondToDebug();
+        }
+    }
+
+    private void respondToDebug()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            collisionsEnabled = !collisionsEnabled;
+        }
+    }
 
     void OnCollisionEnter(Collision collision) // a variable called collision of type Collision
     {
-        if(state != State.Alive){return;}
+        if(state != State.Alive || !collisionsEnabled){return;}
 
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                print("this object luvs u :)"); //TODO remove this line
                 break;
             case "Finish":
                 StartSuccessSequence();
