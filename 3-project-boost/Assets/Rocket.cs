@@ -148,7 +148,7 @@ public class Rocket : MonoBehaviour {
 
     private void RespondToRotateInput()
     {
-        rigidBody.freezeRotation = true; // This takes control of the rotation
+        rigidBody.angularVelocity = Vector3.zero; // remove rotation due to physics
 
         float roationThisFrame = rcsThrust * Time.deltaTime;
 
@@ -160,8 +160,6 @@ public class Rocket : MonoBehaviour {
         {
             transform.Rotate(-Vector3.forward * roationThisFrame);
         }
-
-        rigidBody.freezeRotation = false; // Hands rotation of rigid body back to physics engine
     }
 
 }
