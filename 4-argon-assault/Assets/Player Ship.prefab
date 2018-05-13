@@ -54,6 +54,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4018096429654366}
+  - component: {fileID: 114012864331711530}
+  - component: {fileID: 114628344259438812}
   m_Layer: 0
   m_Name: Player Ship
   m_TagString: Untagged
@@ -68,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620931379902236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 186, z: 0}
+  m_LocalPosition: {x: -0.06428385, y: -0.025625229, z: 6.094908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4652413416670216}
@@ -206,3 +208,41 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114012864331711530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620931379902236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd32249aba6c5f84aaec2b2bec29ae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipSpeed: 10
+  maxXMovement: 6
+  maxYMovement: 3
+  positionPitchFactor: -5
+  controlPitchFactor: -30
+  positionYawFactor: 5
+  controlYawFactor: 30
+  controlRollFactor: -30
+--- !u!114 &114628344259438812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620931379902236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd32249aba6c5f84aaec2b2bec29ae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipSpeed: 10
+  maxXMovement: 6
+  maxYMovement: 3
+  positionPitchFactor: -5
+  controlPitchFactor: -30
+  positionYawFactor: 5
+  controlYawFactor: 30
+  controlRollFactor: -30
