@@ -4,38 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
     
+    [Header("General")]
     [Tooltip("In ms^-1")][SerializeField] float shipSpeed = 15f;
     [Tooltip("How far the player can move left/right")][SerializeField] float maxXMovement = 6f;
     [Tooltip("How far the player can move up/down")] [SerializeField] float maxYMovement = 3f;
 
+    [Header("Screen-position Rotation")]
     [SerializeField] float positionPitchFactor = -5f;
-    [SerializeField] float controlPitchFactor = -30f;
     [SerializeField] float positionYawFactor = 5f;
+
+    [Header("Controller-throw Rotation")]
+    [SerializeField] float controlPitchFactor = -30f;
     [SerializeField] float controlYawFactor = 30f;
     [SerializeField] float controlRollFactor = -30f;
 
+    bool controllsEnabled = true;
+
     float xThrow, yThrow;
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("yo dawg yo got SMACKED.");
-    }
 
     // Update is called once per frame
     void Update ()
     {
-        HandleTranslation();
-        HandleRotation();
+        if (controllsEnabled == true)
+        {
+            HandleTranslation();
+            HandleRotation();
+        }
     }
 
-    private void HandleRotation()
+    private void OnPlayerDeath () //called by a string method 😠
+    {
+        controllsEnabled = false; 
+    }
+
+    private void HandleRotation ()
     {
         float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
         float pitchDueToControlThrow =  yThrow * controlPitchFactor;
@@ -48,7 +52,7 @@ public class Player : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll); //this is a static function that returns a quaternion for what we want to rotate to
     }
 
-    private void HandleTranslation()
+    private void HandleTranslation ()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");    // get x throw value from the controller input
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
