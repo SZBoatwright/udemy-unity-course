@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -5069,6 +5069,41 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018096429654366, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.multiplyColliderForceByParticleSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.multiplyColliderForceByParticleSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198089571642747784, guid: 1b7f8e4b4aac6534b8a1a55d1ebe3f21,
+        type: 2}
+      propertyPath: CollisionModule.collisionMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
