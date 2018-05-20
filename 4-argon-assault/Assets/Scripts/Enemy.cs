@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     [SerializeField] GameObject deathFX;
-    [SerializeField] Transform parent;
+    [SerializeField] Transform parent;r
 
     private void Start()
     {
