@@ -7,16 +7,17 @@ public class ScoreBoard : MonoBehaviour {
 
     int score;
     Text scoreText;
-    [SerializeField] int pointsPerHit;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         scoreText = GetComponent<Text>();
         scoreText.text = score.ToString();
-	}
+    }
 
-    public void ScoreHit()
+    public void ScoreHit(int points)
     {
-        score = score + pointsPerHit;
+        score = score + points;
+        scoreText.text = score.ToString();
     }
 }
