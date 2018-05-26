@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     [Tooltip("In ms^-1")][SerializeField] float shipSpeed = 15f;
     [Tooltip("How far the player can move left/right")][SerializeField] float maxXMovement = 6f;
     [Tooltip("How far the player can move up/down")] [SerializeField] float maxYMovement = 3f;
+    [SerializeField] GameObject[] guns;
 
     [Header("Screen-position Rotation")]
     [SerializeField] float positionPitchFactor = -5f;
@@ -29,8 +30,9 @@ public class PlayerController : MonoBehaviour {
     {
         if (controllsEnabled == true)
         {
-            HandleTranslation();
-            HandleRotation();
+            ProcessTranslation();
+            ProcessRotation();
+            ProcessFiring();
         }
     }
 
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour {
         controllsEnabled = false; 
     }
 
-    private void HandleRotation ()
+    private void ProcessRotation ()
     {
         float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
         float pitchDueToControlThrow =  yThrow * controlPitchFactor;
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll); //this is a static function that returns a quaternion for what we want to rotate to
     }
 
-    private void HandleTranslation ()
+    private void ProcessTranslation ()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");    // get x throw value from the controller input
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
@@ -65,5 +67,33 @@ public class PlayerController : MonoBehaviour {
 
         transform.localPosition = new Vector3(newXPos, transform.localPosition.y, transform.localPosition.z);
         transform.localPosition = new Vector3(transform.localPosition.x, newYPos, transform.localPosition.z);
+    }
+
+    private void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            DeactivateGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
     }
 }
