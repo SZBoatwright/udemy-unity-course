@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23885993315108884}
   - component: {fileID: 114354679633945020}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9b5cabb0c08096943a3f12a546ab4491, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathFX: {fileID: 1210214100733420, guid: 583274b15a996f843aa8589495d589f3, type: 2}
   parent: {fileID: 0}
+  pointsPerHit: 10
+  hitsToKill: 10
