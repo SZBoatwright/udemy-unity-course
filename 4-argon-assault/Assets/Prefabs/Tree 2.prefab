@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33357500484866110}
   - component: {fileID: 23997335404766914}
   - component: {fileID: 95641851566776364}
+  - component: {fileID: 136159099005810916}
   m_Layer: 0
   m_Name: Tree 2
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880469011456690}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 204.6, y: 138.89136, z: 448.1}
+  m_LocalPosition: {x: 207.01535, y: 141.89108, z: 225.36624}
   m_LocalScale: {x: 15.5227, y: 15.5227, z: 15.5227}
   m_Children:
   - {fileID: 4941107808182622}
@@ -196,3 +197,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &136159099005810916
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880469011456690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29
+  m_Height: 4.96
+  m_Direction: 1
+  m_Center: {x: 0.0015825033, y: 2.1071756, z: -0.10652053}
