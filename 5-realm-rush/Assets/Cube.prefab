@@ -678,4 +678,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f64dd155102fb40bcf95766c86a0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 10
