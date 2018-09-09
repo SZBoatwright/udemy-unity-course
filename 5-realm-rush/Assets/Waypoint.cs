@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
+    // public vars are okay in data classes
     public bool isExplored = false;
+    public Waypoint exploredFrom;
 
     Vector2Int gridPos;
     const int gridSize = 10;
