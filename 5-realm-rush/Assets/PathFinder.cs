@@ -6,15 +6,11 @@ using UnityEngine;
 public class PathFinder : MonoBehaviour {
 
     [SerializeField] Waypoint startPoint, endPoint;
-
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-
     Queue<Waypoint> queue = new Queue<Waypoint>();
-
     bool endFound = false;
-
     Waypoint searchCenter; // current searchCenter in loop
-
+    List<Waypoint> path = new List<Waypoint>();
     Vector2Int[] directions =
     {
         Vector2Int.up,
@@ -23,13 +19,31 @@ public class PathFinder : MonoBehaviour {
         Vector2Int.right
     };
 
-    void Start () {
+    public List<Waypoint> GetPath()
+    {
         LoadBlocks();
         ColorStartAndEnd();
-        FindPath();
-	}
+        BreadthFirstSearch();
+        CreatePath();
+        return path;
+    }
 
-    private void FindPath()
+    private void CreatePath()
+    {
+        path.Add(endPoint);
+        Waypoint previous = endPoint.exploredFrom;
+
+        while(previous != startPoint)
+        {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(startPoint);
+        path.Reverse();
+        print(path);
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startPoint);
         while (queue.Count > 0 && !endFound)
@@ -57,13 +71,9 @@ public class PathFinder : MonoBehaviour {
         foreach (Vector2Int direction in directions)
         {
             Vector2Int neighborCoordinates = searchCenter.GetGridPos() + direction;
-            try
+            if(grid.ContainsKey(neighborCoordinates))
             {
                 QueueNewNeighbors(neighborCoordinates);
-            }
-            catch
-            {
-                // do nothing
             }
         }
     }
@@ -78,7 +88,7 @@ public class PathFinder : MonoBehaviour {
         }
     }
 
-    private void ColorStartAndEnd()
+    private void ColorStartAndEnd() //todo: consider moving out
     {
         startPoint.SetTopColor(Color.green);
         endPoint.SetTopColor(Color.red);
