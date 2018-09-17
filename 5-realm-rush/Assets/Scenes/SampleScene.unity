@@ -337,6 +337,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4322342686237680, guid: c2e5f4c0159c2ba40997ef1ede2d464c,
     type: 2}
   m_PrefabInternal: {fileID: 173295921}
+--- !u!1001 &200928059
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922345362384254, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114617050462143296, guid: 593d4be55a4e1f24eba3b007d227721a,
+        type: 2}
+      propertyPath: lookAtTarget
+      value: 
+      objectReference: {fileID: 399080289}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 593d4be55a4e1f24eba3b007d227721a, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &208212668
 Prefab:
   m_ObjectHideFlags: 0
@@ -9758,7 +9805,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
