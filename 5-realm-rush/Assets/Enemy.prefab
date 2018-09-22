@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damager: {fileID: 0}
-  enemyHealth: 5
+  enemyHealth: 10
   deathFX: {fileID: 198697489533127598}
   hitFX: {fileID: 198005953721747724}
 --- !u!114 &114750357642965554

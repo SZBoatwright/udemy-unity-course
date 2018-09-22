@@ -48,7 +48,6 @@ public class PathFinder : MonoBehaviour {
         }
         path.Add(startPoint);
         path.Reverse();
-        print(path);
     }
 
     private void BreadthFirstSearch()
@@ -67,7 +66,6 @@ public class PathFinder : MonoBehaviour {
     {
         if(searchCenter == endPoint)
         {
-            print("endpoint found?");
             endFound = true;
         }
     }

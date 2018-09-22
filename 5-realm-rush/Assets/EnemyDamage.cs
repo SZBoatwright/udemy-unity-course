@@ -11,18 +11,15 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] ParticleSystem hitFX;
 
-    private void OnParticleCollision(GameObject other)
+    private void OnParticleCollision(GameObject particle)
     {
-        if(other == damager)
-        {
-            enemyHealth -= 1;
-            hitFX.Play();
+        enemyHealth -= 1;
+        hitFX.Play();
 
-            if (enemyHealth <= 0)
-            {
-                KillEnemy();
-            }
-        }    
+        if (enemyHealth <= 0)
+        {
+            KillEnemy();
+        }
     }
 
     private void KillEnemy()
