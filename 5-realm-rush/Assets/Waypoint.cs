@@ -32,6 +32,6 @@ public class Waypoint : MonoBehaviour {
 
     private void OnMouseOver()
     {
-        print("mouse is over" + gameObject.namea);   
+        print("mouse is over" + gameObject.name);   
     }
 }
