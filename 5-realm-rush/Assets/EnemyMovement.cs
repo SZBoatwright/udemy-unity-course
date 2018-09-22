@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour {
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
+            // loop that divides the distance between the two waypoints and increments the enemies distance between them based on how many seconds is being waited
             yield return new WaitForSeconds(1);
         }
     }
