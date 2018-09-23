@@ -20,24 +20,17 @@ public class EnemyDamage : MonoBehaviour {
 
         if (enemyHealth <= 0)
         {
-            StartCoroutine(KillEnemy());
+            KillEnemy();
         }
     }
 
-    IEnumerator KillEnemy()
+    private void KillEnemy()
     {
         enemyIsDead = true;
-        deathFX.Play();
+        Instantiate(deathFX, transform.position, Quaternion.identity);
         GetComponent<Rigidbody>().isKinematic = false;
-        yield return new WaitForSeconds(1);
-        //sound effect
         Destroy(gameObject);
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 
     public bool isEnemyDead ()
     {
