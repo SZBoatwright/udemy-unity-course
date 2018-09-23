@@ -29,13 +29,9 @@ public class EnemyMovement : MonoBehaviour {
             for (int i = 0; i < waypointDistance && !isEnemyDead; i++)
             {
                 transform.position = gameObject.transform.position + moveIncrement;
+                transform.LookAt(waypoint.transform.position);
                 yield return new WaitForSeconds(movementSpeed);
             }
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
