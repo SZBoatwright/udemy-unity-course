@@ -353,6 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caafbd269b8ab9448b911e6b4e05a848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSmoothness: 5
+  movementSpeed: 0.01
 --- !u!198 &198005953721747724
 ParticleSystem:
   m_ObjectHideFlags: 1
