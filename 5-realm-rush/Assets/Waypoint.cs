@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class Waypoint : MonoBehaviour {
     // public vars are okay in data classes
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
+
+    [SerializeField] GameObject towerPrefab;
 
     Vector2Int gridPos;
     const int gridSize = 10;
@@ -32,6 +36,15 @@ public class Waypoint : MonoBehaviour {
 
     private void OnMouseOver()
     {
-        print("mouse is over" + gameObject.name);   
+        if (Input.GetMouseButtonDown(0) && isPlaceable == true)
+        {
+            PlaceTower();
+        }
+    }
+
+    private void PlaceTower()
+    {
+        Instantiate(towerPrefab, transform);
+        isPlaceable = false;
     }
 }
