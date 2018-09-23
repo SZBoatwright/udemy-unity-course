@@ -18,14 +18,15 @@ public class EnemyDamage : MonoBehaviour {
 
         if (enemyHealth <= 0)
         {
-            KillEnemy();
+            StartCoroutine(KillEnemy());
         }
     }
 
-    private void KillEnemy()
+    IEnumerator KillEnemy()
     {
-        print("HE DEED!!!!1");
         deathFX.Play();
+        GetComponent<Rigidbody>().isKinematic = false;
+        yield return new WaitForSeconds(1);
         //sound effect
         Destroy(gameObject);
     }
