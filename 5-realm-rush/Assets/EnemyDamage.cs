@@ -11,6 +11,8 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] ParticleSystem hitFX;
 
+    bool enemyIsDead = false;
+
     private void OnParticleCollision(GameObject particle)
     {
         enemyHealth -= 1;
@@ -24,6 +26,7 @@ public class EnemyDamage : MonoBehaviour {
 
     IEnumerator KillEnemy()
     {
+        enemyIsDead = true;
         deathFX.Play();
         GetComponent<Rigidbody>().isKinematic = false;
         yield return new WaitForSeconds(1);
@@ -35,4 +38,9 @@ public class EnemyDamage : MonoBehaviour {
     void Update () {
 		
 	}
+
+    public bool isEnemyDead ()
+    {
+        return enemyIsDead;
+    }
 }

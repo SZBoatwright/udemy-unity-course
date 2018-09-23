@@ -23,11 +23,10 @@ public class EnemyMovement : MonoBehaviour {
     {
         foreach (Waypoint waypoint in path)
         {
-            //transform.position = waypoint.transform.position;
-            // loop that divides the distance between the two waypoints and increments the enemies distance between them based on how many seconds is being waited
             Vector3 moveIncrement = (waypoint.transform.position - gameObject.transform.position) / waypointDistance;
+            bool isEnemyDead = GetComponent<EnemyDamage>().isEnemyDead();
 
-            for (int i = 0; i < waypointDistance; i++)
+            for (int i = 0; i < waypointDistance && !isEnemyDead; i++)
             {
                 transform.position = gameObject.transform.position + moveIncrement;
                 yield return new WaitForSeconds(movementSpeed);
