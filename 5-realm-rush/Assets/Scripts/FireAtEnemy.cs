@@ -12,6 +12,7 @@ public class FireAtEnemy : MonoBehaviour {
 
     // state
     Transform targetEnemy;
+    public Waypoint baseWaypoint;
 
     float enemyDistance;
     
