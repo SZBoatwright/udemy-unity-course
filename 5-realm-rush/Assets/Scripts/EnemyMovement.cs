@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour {
     // params
     [SerializeField] int movementSmoothness = 3;
     [SerializeField] float movementSpeed = 0.001f;
+    [SerializeField] ParticleSystem explodeFX;
 
     float waypointDistance;
 
@@ -33,5 +34,7 @@ public class EnemyMovement : MonoBehaviour {
                 yield return new WaitForSeconds(movementSpeed);
             }
         }
+        Instantiate(explodeFX, gameObject.transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

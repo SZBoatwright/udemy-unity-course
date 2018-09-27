@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSmoothness: 5
   movementSpeed: 0.01
+  explodeFX: {fileID: 198973491267788578, guid: 02597eb0176b5724e82301242a002078,
+    type: 2}
 --- !u!198 &198005953721747724
 ParticleSystem:
   m_ObjectHideFlags: 1
