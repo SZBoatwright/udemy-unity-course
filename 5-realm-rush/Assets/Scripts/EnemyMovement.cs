@@ -34,6 +34,11 @@ public class EnemyMovement : MonoBehaviour {
                 yield return new WaitForSeconds(movementSpeed);
             }
         }
+        SelfDestruct();
+    }
+
+    private void SelfDestruct()
+    {
         Instantiate(explodeFX, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
