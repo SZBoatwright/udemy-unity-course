@@ -10,6 +10,7 @@ public class EnemyDamage : MonoBehaviour {
 
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] ParticleSystem hitFX;
+    [SerializeField] AudioClip shootSFX;
 
     bool enemyIsDead = false;
 
@@ -17,6 +18,7 @@ public class EnemyDamage : MonoBehaviour {
     {
         enemyHealth -= 1;
         hitFX.Play();
+        GetComponent<AudioSource>().PlayOneShot(shootSFX);
 
         if (enemyHealth <= 0)
         {

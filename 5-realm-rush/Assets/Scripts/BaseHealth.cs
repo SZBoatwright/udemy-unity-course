@@ -7,6 +7,7 @@ public class BaseHealth : MonoBehaviour {
 
     [SerializeField] int baseHealth = 10;
     [SerializeField] Text healthText;
+    [SerializeField] AudioClip explosionSFX;
 
     private void Start()
     {
@@ -15,8 +16,8 @@ public class BaseHealth : MonoBehaviour {
 
     private void OnTriggerEnter()
     {
-        print("collision");
         baseHealth -= 1;
         healthText.text = baseHealth.ToString();
+        GetComponent<AudioSource>().PlayOneShot(explosionSFX);
     }
 }
